@@ -7,6 +7,7 @@
 - scoop (package manager)
 - scoop install gradle
 - scoop install mariadb@10.3.7
+- scoop install nodejs
 
 ## mysql 설정
 ```
@@ -106,7 +107,8 @@ mysql> SQL을 복사하여 붙여 넣는다.
 
 2) 프로젝트 폴더를 이클립스 프로젝트로 만든다.
    - 'gradle eclipse'를 실행하여 이클립스 설정 파일을 만든다.
-   - .project, .classpath, .settings/
+   - .project, .classpath, .settings/ 등이 있어야만
+      이클립스는 해당
 
 ```
 
