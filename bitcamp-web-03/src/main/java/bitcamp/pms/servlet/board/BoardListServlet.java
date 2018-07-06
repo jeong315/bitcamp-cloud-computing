@@ -38,7 +38,7 @@ public class BoardListServlet extends HttpServlet{
         out.println("<body>");
         out.println("<h1>게시물 목록</h1>");
         
-        out.println("<p><a href='/bitcamp-web-02/boardForm.html'>새 글</a></p>");
+        out.println("<p><a href='/bitcamp-web-03/boardForm.html'>새 글</a></p>");
         out.println("<table border='1'>");
         out.println("<tr>");
         out.println("    <th>번호</th><th>제목</th><th>등록일</th>");
