@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.GenericServlet;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -36,47 +37,53 @@ public class MemberListServlet extends HttpServlet{
     
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
+        // 포워드 할 때는 이전에 출력한걸 다 날려버린다. 
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<meta charset='UTF-8'>");
-        out.println("<title>멤버 목록</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>멤버 목록</h1>");
-        
-        out.println("<p><a href='/bitcamp-web-03/memberForm.html'>새 회원</a></p>");
-        out.println("<table border='1'>");
-        out.println("<tr>");
-        out.println("    <th>아이디</th><th>이메일</th>");
-        out.println("</tr>");
+//        PrintWriter out = response.getWriter();
+//        
+//        out.println("<!DOCTYPE html>");
+//        out.println("<html>");
+//        out.println("<head>");
+//        out.println("<meta charset='UTF-8'>");
+//        out.println("<title>멤버 목록</title>");
+//        out.println("</head>");
+//        out.println("<body>");
+//        out.println("<h1>멤버 목록</h1>");
+//        
+//        out.println("<p><a href='/bitcamp-web-03/memberForm.html'>새 회원</a></p>");
+//        out.println("<table border='1'>");
+//        out.println("<tr>");
+//        out.println("    <th>아이디</th><th>이메일</th>");
+//        out.println("</tr>");
         
         try {
                 //try 안에는 닫아야 하는 close를 갖고 있는 객체를 선언                
                 // String s = "aa"; 불가 
                 MemberDao memberDao = (MemberDao)getServletContext().getAttribute("memberDao");
                 List<Member> list = memberDao.selectList();
-                    for(Member member : list) {
-                        out.println("<tr>");
-                        out.printf("    <td><a href='view?id=%s'>%s</a></td><td>%s</td>\n",
-                            member.getId(),
-                            member.getId(),
-                            member.getEmail());
-                            out.println("<tr>");
-                        
-                    }
- 
+//                    for(Member member : list) {
+//                        out.println("<tr>");
+//                        out.printf("    <td><a href='view?id=%s'>%s</a></td><td>%s</td>\n",
+//                            member.getId(),
+//                            member.getId(),
+//                            member.getEmail());
+//                            out.println("<tr>");
+//                        
+//                    }
+                
+                request.setAttribute("list",list);
+                RequestDispatcher rd = request.getRequestDispatcher("/member/list.jsp");
+                rd.include(request, response);
         } catch (Exception e) {
-            out.println("<tr><td>목록 가져오기 실패!</td></tr>");
-            e.printStackTrace(out);
+//            out.println("<tr><td>목록 가져오기 실패!</td></tr>");            
+            request.setAttribute("error", e);
+            
+            RequestDispatcher rd = request.getRequestDispatcher("/error.jsp");
+            rd.forward(request, response);
         }
-        out.println("</table>");
-        out.println("</body>");
-        out.println("</html>");
+//        out.println("</table>");
+//        out.println("</body>");
+//        out.println("</html>");
 
     }
     
