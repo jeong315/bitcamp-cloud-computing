@@ -3,10 +3,10 @@ package bitcamp.pms.servlet.classroom;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.ServletException;
@@ -16,16 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
-@WebServlet("/classroom/add")
-public class ClassroomAddServlet extends HttpServlet{
-    
+@WebServlet("/classroom/update")
+public class ClassroomUpdateServlet extends HttpServlet{
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         
         request.setCharacterEncoding("UTF-8");
         
 //        Classroom classroom = new Classroom();
+//        classroom.setNo(Integer.parseInt(request.getParameter("no")));
 //        classroom.setTitle(request.getParameter("title"));
 //        classroom.setStartDate(Date.valueOf(request.getParameter("startDate")));
 //        classroom.setEndDate(Date.valueOf(request.getParameter("endDate")));
@@ -39,40 +39,43 @@ public class ClassroomAddServlet extends HttpServlet{
         out.println("<head>");
         out.println("<meta charset='UTF-8'>");
         out.println("<meta http-equiv='Refresh' content='1;url=list'>");
-        out.println("<title>강의 등록</title>");
+        out.println("<title>강의 변경</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>강의 등록 결과</h1>");
+        out.println("<h1>강의 변경 결과</h1>");
         
         try {
-//            classroomDao.insert(classroom);
+//            int count = classroomDao.update(classroom);
             
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cjdbc.Driver");
             try (
                 Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://52.79.189.185:3306/studydb",
+                    "jdbc:mysql://localhost:3306/studydb",
                     "study", "1111");
                 PreparedStatement stmt = con.prepareStatement(
-                    "insert into pms2_classroom(titl,sdt,edt,room) values(?,?,?,?)");) {
-                
-//                Calendar.getInstance(Locale.KOREAN)
+                    "update pms2_classroom set titl=?, sdt=?, edt=?, room=? where crno=?");) {
                 
                 stmt.setString(1, request.getParameter("title"));
-                stmt.setDate(2, Date.valueOf(request.getParameter("startDate")),Calendar.getInstance(Locale.KOREAN));
-                stmt.setDate(3, Date.valueOf(request.getParameter("endDate")),Calendar.getInstance(Locale.KOREAN));
-                stmt.setString(4, request.getParameter("room"));
-            
+                stmt.setDate(2, classroom.getStartDate(), Calendar.getInstance(Locale.KOREAN));
+                stmt.setDate(3, classroom.getEndDate(), Calendar.getInstance(Locale.KOREAN));
+                stmt.setString(4, classroom.getRoom());
+                stmt.setInt(5, classroom.getNo());
                 stmt.executeUpdate();
+                
             }
             
-            out.println("<p>등록 성공!</p>");
+            if (count == 0) {
+                out.println("<p>해당 강의가 존재하지 않습니다.</p>");
+            } else {
+                out.println("<p>변경하였습니다.</p>");
+            }
         } catch (Exception e) {
-            out.println("<p>등록 실패!</p>");
+            out.println("<p>변경 실패!</p>");
             e.printStackTrace(out);
         }
         out.println("</body>");
         out.println("</html>");
         
     }
-
+    
 }
