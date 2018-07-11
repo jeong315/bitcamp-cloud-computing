@@ -21,7 +21,14 @@
 - MVC 아키텍처의 개념
 
 
+## web-06 : Front Controller 도입
+- 서블릿들이 공통으로 수행하는 작업을 프론트 컨트롤러에게 맡긴다.
+- 나머지 서블릿들은 Page Controller로 부른다.
 
+## web-07 : Page Controller를 POJO로 변환
+- 프론트 컨트롤러가 도입되면 페이지 컨트롤러는 일반 자바 객체로 만들어도 된다.
+- 
+- Page Controller는 POJO로 만들어도 된다.
 
 # bitcamp-web-02 : 서블릿
 pms2_member 테이블에 대한 CRUD 서블릿을 만들기
