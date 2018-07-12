@@ -24,6 +24,7 @@ public class BoardDao {
     
     public List<Board> selectList(Map<String, Object> params) throws Exception{
         try(SqlSession sqlSession = sqlSessionFactory.openSession()){
+            System.out.println("!@#");
             return sqlSession.selectList("board.selectList", params);
         }
     }

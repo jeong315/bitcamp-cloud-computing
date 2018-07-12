@@ -16,9 +16,7 @@ import bitcamp.pms.domain.Member;
 @WebServlet("/member/add")
 public class MemberAddServlet extends HttpServlet {
     @Override
-    protected void doPost(
-            HttpServletRequest request, 
-            HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         try {
             Member member = new Member();

@@ -5,23 +5,23 @@
   
   <mapper namespace="board">
   
-  <resultMap type="Board" id="BoardMap">
-    <id column="bno" property="no"/>
-    <result column="titl" property="title"/>
-    <result column="cont" property="content"/>
-    <result column="cdt" property="createDate"/>
-  </resultMap>
+<!--   <resultMap type="Board" id="BoardMap"> -->
+<!--     <id column="bno" property="no"/> -->
+<!--     <result column="titl" property="title"/> -->
+<!--     <result column="cont" property="content"/> -->
+<!--     <result column="cdt" property="createDate"/> -->
+<!--   </resultMap> -->
   
-    <select id="selectList" resultType="BoardMap" parameterType="map">
-        select bno, titl, cdt  
+    <select id="selectList" resultType="bitcamp.pms.domain.Board" parameterType="map">
+        select bno no, titl title, cdt content  
           from pms2_board
-          <if test="startIndex != null and pageSize != null">
-            limit #{startIndex}. #{pageSize}
-          </if>    
     </select>
+<!--           <if test="startIndex != null and pageSize != null"> -->
+<!--             limit #{startIndex}. #{pageSize} -->
+<!--           </if>     -->
     
-    <select id="selectOne" resultType="BoardMap" parameterType="Int">
-        select *
+    <select id="selectOne" resultType="bitcamp.pms.domain.Board" parameterType="int">
+        select bno no, titl title, cont content, cdt createDate 
           from pms2_board
          where bno = ${value}   
     </select>
@@ -38,7 +38,7 @@
          where bno = #{no} 
     </update>
     
-    <delete id="delete" parameterType="Int">
+    <delete id="delete" parameterType="int">
         delete from pms2_board
          where bno = #{value}
     </delete>

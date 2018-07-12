@@ -30,8 +30,18 @@
 - 
 - Page Controller는 POJO로 만들어도 된다.
 
-# bitcamp-web-02 : 서블릿
-pms2_member 테이블에 대한 CRUD 서블릿을 만들기
+
+# web-08 : 애노테이션으로 요청 핸들러 다루기
+- 요청 핸들러(Request Handler) : 클라이언트 요청이 들어 왔을 때 호출되는 메서드.
+  즉, 클라이언트 요청을 처리하는 메서드
+- 인터페이스룰 구현하는 대신에 애노테이션으로 요청 핸들러를 표시하여 프론트 컨트롤러가 찾게 한다.
+- 이렇게 함으로써 페이지 컨트롤러를 만들 때 특정 인터페이스에 종속되지 않게 한다.
+
+# web-09 :객체 생성을 자동화 하기 위해 IoC 컨테이너를 만들기
+- IoC 컨테이너를 통해 페이지 컨트롤러의 객체를 자동 생성한다.
+- 페이지 컨트롤러의 의존 객체를 자동으로 주입한다.
+
+
 
 ## 패키지 생성
 bitcamp.pms.servlet 패키지 생성
@@ -45,3 +55,6 @@ bitcamp.pms.servlet 패키지 생성
 - mysql JDBC Driver 의존 라이브러리 추가하기
  bitcamp.pms.servlet.member 패키지 생성
 MemberListServlet, MemberViewServlet, MemberAddServlet, MemberUpdateServlet
+
+# bitcamp-web-02 : 서블릿
+pms2_member 테이블에 대한 CRUD 서블릿을 만들기

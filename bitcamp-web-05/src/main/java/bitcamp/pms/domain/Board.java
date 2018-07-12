@@ -3,10 +3,10 @@ package bitcamp.pms.domain;
 import java.sql.Date;
 
 public class Board {
-    protected int no;
-    protected String title;
-    protected String content;
-    protected Date creatDate;
+    public int no;
+    public String title;
+    public String content;
+    public Date createDate;
     
     public int getNo() {
         return no;
@@ -26,11 +26,11 @@ public class Board {
     public void setContent(String content) {
         this.content = content;
     }
-    public Date getCreatDate() {
-        return creatDate;
+    public Date getCreateDate() {
+        return createDate;
     }
-    public void setCreatDate(Date creatDate) {
-        this.creatDate = creatDate;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
     
     

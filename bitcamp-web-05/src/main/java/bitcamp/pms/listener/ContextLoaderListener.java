@@ -24,10 +24,8 @@ public class ContextLoaderListener
         
         try {
             String resource = "bitcamp/pms/config/mybatis-config.xml";
-            InputStream inputStream = 
-                    Resources.getResourceAsStream(resource);
-            SqlSessionFactory sqlSessionFactory =
-              new SqlSessionFactoryBuilder().build(inputStream);
+            InputStream inputStream = Resources.getResourceAsStream(resource);
+            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
             
             MemberDao memberDao = new MemberDao(sqlSessionFactory);
             BoardDao boardDao = new BoardDao(sqlSessionFactory);

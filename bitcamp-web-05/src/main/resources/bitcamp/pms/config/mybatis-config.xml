@@ -22,7 +22,7 @@
   </environments>
   
   <mappers>
-<!--     <mapper resource="bitcamp/pms/sql/MemberMapper.xml"/> -->
+    <mapper resource="bitcamp/pms/sql/MemberMapper.xml"/>
     <mapper resource="bitcamp/pms/sql/BoardMapper.xml"/>
   </mappers>
   

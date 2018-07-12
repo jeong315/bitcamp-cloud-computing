@@ -47,7 +47,7 @@ public class BoardListServlet extends HttpServlet{
             BoardDao boardDao = (BoardDao) getServletContext().getAttribute("boardDao");
             List<Board> list = boardDao.selectList(params);
             request.setAttribute("list", list);
-            
+            System.out.println("모야모야"+list.size()+"~~!");
             RequestDispatcher rd = request.getRequestDispatcher("/board/list.jsp");
             rd.include(request, response);
         } catch (Exception e) {

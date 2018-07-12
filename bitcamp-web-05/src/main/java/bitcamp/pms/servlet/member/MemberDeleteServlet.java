@@ -15,9 +15,7 @@ import bitcamp.pms.dao.MemberDao;
 @WebServlet("/member/delete")
 public class MemberDeleteServlet extends HttpServlet {
     @Override
-    protected void doGet(
-            HttpServletRequest request, 
-            HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         try {
             MemberDao memberDao = 
