@@ -22,27 +22,7 @@ public class BoardUpdateServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      
-//        request.setCharacterEncoding("UTF-8");
-        
-//        Board board = new Board();
-//        board.setNo(Integer.parseInt(request.getParameter("no")));
-//        board.setTitle(request.getParameter("title"));
-//        board.setContent(request.getParameter("content"));
-        
-//        response.setContentType("text/html;charset=UTF-8");
-//        PrintWriter out = response.getWriter();
-        
-//        out.println("<!DOCTYPE html>");
-//        out.println("<html>");
-//        out.println("<head>");
-//        out.println("<meta charset='UTF-8'>");
-//        out.println("<meta http-equiv='Refresh' content='1;url=list'>");
-//        out.println("<title>게시물 변경</title>");
-//        out.println("</head>");
-//        out.println("<body>");
-//        out.println("<h1>게시물 변경 결과</h1>");
-        
+
         try {
             Board board = new Board();
             
@@ -50,31 +30,28 @@ public class BoardUpdateServlet extends HttpServlet{
             board.setTitle(request.getParameter("title"));
             board.setContent(request.getParameter("content"));
                 
+            System.out.println("기본 키인 번호 : " + Integer.parseInt(request.getParameter("no")));
+            System.out.println("수정된 제목 : " + request.getParameter("title"));
+            System.out.println("수정된 내용 : " + request.getParameter("content"));
+            
             BoardDao boardDao = (BoardDao)this.getServletContext().getAttribute("boardDao");
             
-//                System.out.println(boardDao.update(board)+"잘 나옴?");
                 
-//            System.out.println();
+                
             if (boardDao.update(board) == 0) {
                 RequestDispatcher rd = request.getRequestDispatcher("/board/updatefail.jsp");
-//                out.println("<p>해당 게시물이 존재하지 않습니다.</p>");
+                rd.forward(request, response);
             } else {
                 response.sendRedirect("list");
-//                out.println("<p>변경하였습니다.</p>");
             }
-            
-    
+  
         } catch (Exception e) {
             request.setAttribute("error", e);
-            RequestDispatcher rd = 
-                    request.getRequestDispatcher("/error.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/error.jsp");
             rd.forward(request, response);
-//            out.println("<p>변경 실패!</p>");
-//            e.printStackTrace(out);
+
         }
-//        out.println("</body>");
-//        out.println("</html>");
-        
+
     }
 
 }

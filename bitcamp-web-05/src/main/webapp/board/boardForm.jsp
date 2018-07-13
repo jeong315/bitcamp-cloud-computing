@@ -11,6 +11,8 @@
 <form action="add" method="post">
 제목: <input type="text" name="title"><br>
 내용: <textarea name="content" rows="10" cols="60"></textarea><br>
+<input type="text" hidden="" name="no">
+<input type="date" hidden="" name="createDate">
 <button>등록</button>
 </form>
 

@@ -32,6 +32,10 @@ public class Board {
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
+    @Override
+    public String toString() {
+        return "Board [no=" + no + ", title=" + title + ", content=" + content + ", createDate=" + createDate + "]";
+    }
     
     
 }

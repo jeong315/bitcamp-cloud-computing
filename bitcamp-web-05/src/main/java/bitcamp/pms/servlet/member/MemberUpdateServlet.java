@@ -24,12 +24,10 @@ public class MemberUpdateServlet extends HttpServlet {
             member.setEmail(request.getParameter("email"));
             member.setPassword(request.getParameter("password"));
             
-            MemberDao memberDao = 
-                    (MemberDao) getServletContext().getAttribute("memberDao");
+            MemberDao memberDao = (MemberDao) getServletContext().getAttribute("memberDao");
                  
             if (memberDao.update(member) == 0) {
-                RequestDispatcher rd = 
-                        request.getRequestDispatcher("/member/updatefail.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/member/updatefail.jsp");
                 rd.forward(request, response);
             } else {
                 response.sendRedirect("list");
@@ -37,19 +35,9 @@ public class MemberUpdateServlet extends HttpServlet {
             
         } catch (Exception e) {
             request.setAttribute("error", e);
-            RequestDispatcher rd = 
-                    request.getRequestDispatcher("/error.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/error.jsp");
             rd.forward(request, response);
         }
     }
     
 }
-
-
-
-
-
-
-
-
-

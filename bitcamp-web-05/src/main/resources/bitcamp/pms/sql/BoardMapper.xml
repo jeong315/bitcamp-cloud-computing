@@ -13,7 +13,7 @@
 <!--   </resultMap> -->
   
     <select id="selectList" resultType="bitcamp.pms.domain.Board" parameterType="map">
-        select bno no, titl title, cdt content  
+        select bno no, titl title, cdt createDate  
           from pms2_board
     </select>
 <!--           <if test="startIndex != null and pageSize != null"> -->
@@ -33,7 +33,7 @@
     
     <update id="update" parameterType="board">
         update pms2_board
-           set titl = #{title}
+           set titl = #{title},
                cont = #{content}
          where bno = #{no} 
     </update>

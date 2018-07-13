@@ -33,7 +33,7 @@
 	<p>
 	<a href='list'>목록</a>
 	<button>변경</button>
-	<a href='delete?id=${board.no}'>삭제</a>
+	<a href='delete?no=${board.no}'>삭제</a>
 	</p>
 	</form>
 </c:otherwise>

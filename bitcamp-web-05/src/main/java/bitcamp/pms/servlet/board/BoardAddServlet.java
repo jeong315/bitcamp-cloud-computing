@@ -24,24 +24,19 @@ public class BoardAddServlet extends HttpServlet{
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     
-//        response.setContentType("text/html;charset=UTF-8");
-//        PrintWriter out = response.getWriter();
         
         try {
             Board board = new Board();
-            board.setNo(Integer.parseInt(request.getParameter("no")));
+
             board.setTitle(request.getParameter("title"));
             board.setContent(request.getParameter("content"));
-            
-            Date sdf = (Date) new SimpleDateFormat("dd.MM.yyyy").parse(request.getParameter("createDate"));
-            board.setCreatDate(sdf);
+
             
             BoardDao boardDao = (BoardDao)this.getServletContext().getAttribute("boardDao");
 
             boardDao.insert(board);
-            response.sendRedirect("list");
 
+            response.sendRedirect("list");
 
         } catch (Exception e) {
             request.setAttribute("error", e);
