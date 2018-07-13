@@ -37,15 +37,7 @@ public class DispatcherServlet extends HttpServlet{
                 rd.forward(request, response);
                 //얜 걍 보내버림
             }
-            
-            
-            
-            
-            
-            
-            
-            
-
+          
     }
 
 }

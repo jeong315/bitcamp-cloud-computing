@@ -9,7 +9,7 @@
 <title>멤버 보기</title>
 </head>
 <body>
-body>
+
 
 <h1>멤버 등록</h1>
 <form action="add" method="post">

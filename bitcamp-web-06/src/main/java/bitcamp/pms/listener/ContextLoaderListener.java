@@ -11,6 +11,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import bitcamp.pms.dao.BoardDao;
 import bitcamp.pms.dao.MemberDao;
 
 @WebListener
@@ -29,9 +30,10 @@ public class ContextLoaderListener
               new SqlSessionFactoryBuilder().build(inputStream);
             
             MemberDao memberDao = new MemberDao(sqlSessionFactory);
-            
+            BoardDao boardDao = new BoardDao(sqlSessionFactory);
             ServletContext sc = sce.getServletContext();
             sc.setAttribute("memberDao", memberDao);
+            sc.setAttribute("boardDao", boardDao);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -20,21 +20,18 @@ import bitcamp.pms.controller.MemberViewController;
 import bitcamp.pms.dao.MemberDao;
 
 @WebListener
-public class ContextLoaderListener 
-    implements ServletContextListener {
+public class ContextLoaderListener implements ServletContextListener {
     
     @Override
-    public void contextInitialized(ServletContextEvent sce) {
+    public void contextInitialized(ServletContextEvent sce) { 
         System.out.println("ContextLoaderListener 실행!");
         
         try {
             ApplicationContext iocContainer = new ApplicationContext("bitcamp.pms");
             
             String resource = "bitcamp/pms/config/mybatis-config.xml";
-            InputStream inputStream = 
-                    Resources.getResourceAsStream(resource);
-            SqlSessionFactory sqlSessionFactory =
-              new SqlSessionFactoryBuilder().build(inputStream);
+            InputStream inputStream = Resources.getResourceAsStream(resource);
+            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
             
             iocContainer.addBean("sqlSessionFactory", sqlSessionFactory);
             iocContainer.refresh();
@@ -42,17 +39,7 @@ public class ContextLoaderListener
             //프론트 컨트롤러가 사용할 수 있도록 IoC 컨테이너를 
             //ServletContext 보관소에 저장해둔다. 
             ServletContext sc = sce.getServletContext();
-            sc.setAttribute("iocContainer", iocContainer);
-            
-//            MemberDao memberDao = new MemberDao(sqlSessionFactory);
-//            
-//            ServletContext sc = sce.getServletContext();
-//            
-//            sc.setAttribute("/member/list", new MemberListController(memberDao));      
-//            sc.setAttribute("/member/view", new MemberViewController(memberDao));
-//            sc.setAttribute("/member/update", new MemberUpdateController(memberDao));
-//            sc.setAttribute("/member/delete", new MemberDeleteController(memberDao));
-//            sc.setAttribute("/member/add", new MemberAddController(memberDao));
+            sc.setAttribute("iocContainer", iocContainer);           
             
         } catch (Exception e) {
             e.printStackTrace();

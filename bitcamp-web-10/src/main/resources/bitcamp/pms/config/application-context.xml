@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd 
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">        
+
+<!--          <context:annotation-config/> -->
+<!--            위에꺼가 아래꺼에 포함되어 있기 때문에 지워줘도 됨, 목적 : 객체 생성의 자동화  -->
+         <context:component-scan base-package="bitcamp.pms">
+         <!-- 등록하는 대체 문법일뿐 -->
+            <context:exclude-filter type="regex" expression="bitcamp.pms.test.*"/> 
+                                      <!--bitcamp.pms.test.* 는 무시하라  -->
+        </context:component-scan>
+        
+        <!-- 
+        Object builder = new SqlSessionFactoryBuilder();
+        iocContainer.put("sqlSessionFactoryBuilder", builder);
+         -->
+<!--         <bean id="sqlSessionFactoryBuilder"  -->
+<!--               class="org.apache.ibatis.session.SqlSessionFactoryBuilder"/> -->
+        
+        <!-- Object factory = sqlSessionFactoryBuilder.build();
+             iocContainer.put("sqlSessionFactory", factory); -->      
+<!--        <bean id="sqlSessionFactory"  -->
+<!--              factory-bean="sqlSessionFactoryBuilder" -->
+<!--              factory-method="build"> -->
+<!--             <constructor-arg ref="inputStream"/>ref:인스턴스 value:인트 스트링 그런거 -->
+<!--        </bean> -->
+       
+       <!-- Object obj = Resources.getResourceAsStream("bit~config.xml");
+            iocContainer.put("inputStream", obj); -->       
+<!--        <bean id="inputStream"  -->
+<!--              class="org.apache.ibatis.io.Resources" -->
+<!--              factory-method="getResourceAsStream">getr~stream리턴값을 inputSTream에 넣는다. -->
+<!--              <constructor-arg value="bitcamp/pms/config/mybatis-config.xml"/> -->
+<!--         </bean>      -->
+        
+        <!-- 공장에서 SqlSessionFactory 만들기 
+          => 실행 원리!
+          =>  - class 속성에 지정된 클래스가 FactoryBean 구현체라면,
+          =>     그 객체를 만들어 저장하는 것이 아니라
+          =>     그 객체의 getObject()를 호출하면 그 리턴 값을 id이름으로 저장한다. -->
+        <bean id="sqlSessionFactory" class="bitcamp.pms.factory.SqlSessionFactoryBean"/>
+       
+</beans>
