@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd 
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+        
+<!--      <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>         -->
+<!--     <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/> -->
+
+             <!-- ↓namespace -->
+<!--          <context:annotation-config/> -->
+<!--            위에꺼가 아래꺼에 포함되어 있기 때문에 지워줘도 됨, 목적 : 객체 생성의 자동화  -->
+         <context:component-scan base-package="bitcamp.pms.test"/>
+         <!-- 등록하는 대체 문법일뿐 -->
+
+</beans>

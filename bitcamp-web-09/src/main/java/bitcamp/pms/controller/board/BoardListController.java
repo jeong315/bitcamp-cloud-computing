@@ -1,0 +1,52 @@
+ package bitcamp.pms.controller.board;
+
+import java.util.HashMap;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import bitcamp.pms.annotation.AutoWired;
+import bitcamp.pms.annotation.Controller;
+import bitcamp.pms.annotation.RequestMapping;
+import bitcamp.pms.controller.PageController;
+import bitcamp.pms.dao.BoardDao;
+import bitcamp.pms.domain.Board;
+
+@Controller("/board/list")
+public class BoardListController{
+    
+    BoardDao boardDao;
+    public BoardListController() {}
+    
+    public BoardListController(BoardDao boardDao) {
+        this.boardDao = boardDao;
+    }
+    
+    @AutoWired
+    public void setBoardDao(BoardDao boardDao) {
+        this.boardDao = boardDao;
+    }
+
+    @RequestMapping
+    public String list(HttpServletRequest request, HttpServletResponse response) throws Exception {
+       
+        HashMap<String, Object> params = new HashMap<>();
+        
+        if(request.getParameter("page") != null && request.getParameter("size") != null) {
+            int page = Integer.parseInt(request.getParameter("page"));
+            int size = Integer.parseInt(request.getParameter("size"));
+            params.put("startIndex", (page - 1) * size);
+            params.put("pageSize", size);
+        }
+        
+        response.setContentType("text/html;charset=UTF-8");
+            
+            List<Board> list = boardDao.selectList(params);
+            request.setAttribute("list", list);
+            
+            System.out.println("모야모야"+list.toString()+"~~!");
+                 
+        return "/board/list.jsp";
+    }
+}

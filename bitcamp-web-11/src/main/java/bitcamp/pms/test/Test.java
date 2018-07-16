@@ -1,0 +1,42 @@
+package bitcamp.pms.test;
+import java.io.File;
+import java.io.FileFilter;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Test {  
+    public static void main(String[] args) throws Exception {
+
+        //Spring framework에 대해서 요약정리
+        
+        //Spring IoC 컨테이너 객체 생성하기      
+        ClassPathXmlApplicationContext iocContainer = new ClassPathXmlApplicationContext("bitcamp/pms/test/application-context.xml");
+        
+        
+        System.out.println("몇개들었니?"+iocContainer.getBeanDefinitionCount()+"개요.");
+        System.out.println("=-==-=-=-=-=-===-=-=-=-=-");
+        
+        String[] names = iocContainer.getBeanDefinitionNames();       
+        for(String name : names) {
+            System.out.println("이름은?"+iocContainer.getBean(name).getClass().getName()+"인데요");
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+}

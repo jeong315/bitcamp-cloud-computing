@@ -13,11 +13,7 @@ import javax.servlet.annotation.WebFilter;
 public class CharacterEncodingFilter implements Filter {
 
     @Override
-    public void doFilter(
-            ServletRequest request, 
-            ServletResponse response, 
-            FilterChain chain)
-            throws IOException, ServletException {
+    public void doFilter( ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         
         // 서블릿을 실행하기 전에 수행할 작업
         request.setCharacterEncoding("UTF-8");

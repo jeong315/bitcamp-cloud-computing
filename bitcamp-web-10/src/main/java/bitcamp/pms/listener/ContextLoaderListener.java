@@ -22,7 +22,7 @@ public class ContextLoaderListener implements ServletContextListener {
             String[] names = iocContainer.getBeanDefinitionNames();
             System.out.println("=================================");
             for(String name : names) {
-                System.out.printf("%s ==> %s\n",name,iocContainer.getBean(name).getClass().getName());
+                System.out.printf("%s컨테이너 정의이름==> %s\n",name,iocContainer.getBean(name).getClass().getName());
             }
             System.out.println("=================================");
             //프론트 컨트롤러가 사용할 수 있도록 IoC 컨테이너를 

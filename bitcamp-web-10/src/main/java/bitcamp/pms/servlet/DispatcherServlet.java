@@ -50,6 +50,8 @@ public class DispatcherServlet extends HttpServlet{
                 
                 //페이지 컨트롤러의 메서드를 호출한다.                      객체 주소       파라미터값
                 String view = (String)requestHandler.invoke(pageController, request, response);
+
+                
                 if(view.startsWith("redirect:")) {
                     response.sendRedirect(view.substring(9));
                 }else {

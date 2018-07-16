@@ -12,12 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import bitcamp.pms.context.ApplicationContext;
-import bitcamp.pms.controller.MemberAddController;
-import bitcamp.pms.controller.MemberDeleteController;
-import bitcamp.pms.controller.MemberListController;
-import bitcamp.pms.controller.MemberUpdateController;
-import bitcamp.pms.controller.MemberViewController;
-import bitcamp.pms.dao.MemberDao;
+
 
 @WebListener
 public class ContextLoaderListener implements ServletContextListener {
