@@ -18,7 +18,7 @@ public class Exam02_1 {
     
     // ServletContext를 주입 받을 때도 인스턴스 변수로 주입받는다.
     ServletContext servletContext;
-    //요청 핸들러에 파라미터로 못받는다. 주입받아야함
+    //요청 핸들러에 파라미터로 못받는다. ServletContext는 주입받아야함
     
     public Exam02_1(BoardDao boardDao, ServletContext servletContext) {
         this.boardDao = boardDao;
@@ -29,7 +29,8 @@ public class Exam02_1 {
     @RequestMapping("m1")  
     @ResponseBody  
     public String m1() {
-        return this.servletContext.getContextPath();
+        return "getServletContextName : "+this.servletContext.getServletContextName()
+                +"\n getContextPath : "+this.servletContext.getContextPath();
     }
     
 }
