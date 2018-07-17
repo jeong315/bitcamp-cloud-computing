@@ -8,7 +8,7 @@
 - mvnrepository.com에서 "Mybatis spring"를 찾는다
 - build.gradle 의존  라이브러리 정보를 추가
 - 'gradle cleanEclipse'를 실행하여 기존 이클립스 설정을 제거한다.
-- 'gradle eclipse'를 실행하여 이클립스 관련 설정 파일을 새로 만든다.
+- 'gradle eclipse'를 실행하여 이클립스 관련 설정 파일을 새로 만든다. 
 - 이때 추가한 의존 라이브러리가 자동으로 다운로드 될 것이다.
 - 웹 프로젝트를 refresh 하여 라이브러리 정보를 갱신한다.
 
