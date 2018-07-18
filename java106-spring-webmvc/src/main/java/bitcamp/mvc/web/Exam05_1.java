@@ -49,7 +49,7 @@ public class Exam05_1 {
         return "Exam05_1.m4()";
     }
     */
-    //@Autowired ServletContext servletContext;
+    @Autowired ServletContext servletContext;
     //의존객체로 주입받아야함. 파라미터로 받을 순 없음 
     
 }
