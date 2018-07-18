@@ -19,6 +19,7 @@ public class Exam05_8 {
     
     // @Cookie 애노테이션을 이용하여 클라이언트가 보낸 쿠키 값을  
     // 프론트 컨트롤러로부터 받을 수 있다.
+    //한글 보낼땐 인코더
     @GetMapping(value="m1", produces="text/plain;charset=UTF-8")
     @ResponseBody
     public String m1(HttpServletResponse response) {
@@ -36,7 +37,7 @@ public class Exam05_8 {
             throw new RuntimeException(e);
         }
     }
-    
+    //한글 받을 때는 디코더 해줘야함 
     @GetMapping(value="m2", produces="text/plain;charset=UTF-8")
     @ResponseBody
     public String m2(
@@ -54,6 +55,22 @@ public class Exam05_8 {
         }
     }
     
+    //최신톰캣이라서 실행이 되는 것 
+    @GetMapping(value="m3", produces="text/plain;charset=UTF-8")
+    @ResponseBody
+    public String m2(
+            // URL 인코딩된 쿠키 값을 받을 때는 Cookie 객체로 받아야 문자가 깨지지 않는다.
+            @CookieValue(value="name", defaultValue="") String name, 
+            
+            // URL 인코딩된 값이 아닌 경우에는 다음과 같이 특정 타입으로 바로 받아도 된다.
+            @CookieValue(value="age", defaultValue="0") int age) {
+        try {    
+            System.out.println(name);
+            return String.format("m2(): name=%s, age=%d",name, age);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 
 

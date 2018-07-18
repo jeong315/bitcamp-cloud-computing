@@ -50,6 +50,7 @@ public class Exam05_9 {
     @PostMapping(value="post", consumes="text/csv")
     @ResponseBody
     public String m3(
+            //요청데이터를 통으로 받아서 보내라 @RequestBody
             @RequestBody String content) {
         String[] values = content.split(",");
         return String.format("m3(): name=%s, age=%s, tel=%s", 

@@ -24,7 +24,7 @@ public class Exam05_2 {
     }
     
     // 만약 클라이언트가 보낸 값의 이름과 파라미터의 이름이 같을 경우
-    // @RequestParam에 이름을 생략할 수 있다.
+    // @RequestParam에 이름을 생략할 수 있다.그리고 name과 age모두 필수임 
     @GetMapping(value="m2")  
     @ResponseBody  
     public String m2(
@@ -37,7 +37,7 @@ public class Exam05_2 {
     // @RequestParam 애노테이션을 생략해도 된다.
     // => 이 애노테이션을 붙이지 않으면 파라미터의 값이 선택사항으로 다룬다.
     // => 즉 파라미터 값이 넘어 오지 않으면 null 값을 갖는다.
-    // => 파라미터의 타입이 문자열이 아닐 경우 형변환 할 때 오류가 발생한다.
+    // => 파라미터의 타입이 문자열이 아닐 경우 형변환 할 때 오류가 발생한다. name과 age가 선택사항이 된다.
     @GetMapping(value="m3")  
     @ResponseBody  
     public String m3(
@@ -53,7 +53,7 @@ public class Exam05_2 {
     public String m4(
             @RequestParam(required=false) String name, 
             @RequestParam(required=false) int age) {
-        return String.format("m3(): name=%s, age=%d", name, age);
+        return String.format("m4(): name=%s, age=%d", name, age);
     }
     
     // 클라이언트가 값을 보내지 않으면 기본 값을 넣도록 지정할 수 있다.
@@ -62,7 +62,7 @@ public class Exam05_2 {
     public String m5(
             String name, 
             @RequestParam(defaultValue="20") int age) {
-        return String.format("m3(): name=%s, age=%d", name, age);
+        return String.format("m5(): name=%s, age=%d", name, age);
     }
     
     

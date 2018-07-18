@@ -34,7 +34,7 @@ public class Exam05_10 {
             ) throws Exception {
         
         String filePath = sc.getRealPath("/" + photo.getOriginalFilename());
-        photo.transferTo(new File(filePath));
+        photo.transferTo(new File(filePath));//이것은 서버에 저장하기 m                                    
         
         return String.format("m1(): name=%s, age=%d, photo=%s", 
                 name, 

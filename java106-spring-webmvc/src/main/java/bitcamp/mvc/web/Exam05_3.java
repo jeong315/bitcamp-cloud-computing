@@ -21,7 +21,7 @@ public class Exam05_3 {
         return String.format("m1(): no=%d, title=%s, content=%s", 
                 board.getNo(),
                 board.getTitle(),
-                board.getContent());
+                board.getContent()); //이 메서드를 호출하는 프런트머시기가 호출한다.
     }
     
     // 객체로 받을 수 있는 것은 받고, 낱개로도 받을 수 있다.

@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.InitBinder;
 // 모든 페이지 컨트롤러에 대해 조언을 수행하는 클래스 정의
 // => 다음 애노테이션을 붙이면 프론트 컨트롤러는 페이지 컨트롤러를 실행하지 전에 
 //    먼저 이 클래스를 살펴볼 것이다.
+//모든 페이지 컨트롤러에게 조언해주는 메서드가 있따 이 클래스 살펴보고 필요한거 있음 알아서해라 
 @ControllerAdvice
 public class Exam05_5_GlobalControllerAdvice {
+    
+    
     @InitBinder 
     public void initBinder(WebDataBinder binder) {
         System.out.println("Exam05_5_GlobalControllerAdvice.initBinder()");

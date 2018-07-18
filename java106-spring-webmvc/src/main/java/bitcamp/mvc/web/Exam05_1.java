@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -22,17 +23,13 @@ public class Exam05_1 {
     // => 그냥 해당 타입의 파라미터를 선언만 하면 된다.
     @GetMapping(value="m1")  
     @ResponseBody  
-    public String m1(
-            ServletRequest request,
-            ServletResponse response) {
+    public String m1(ServletRequest request, ServletResponse response) {
         return "Exam05_1.m1()";
-    }
+    }//HttpServletRequest, HttpServletResponse가 넘어온다.
     
     @GetMapping(value="m2")  
     @ResponseBody  
-    public String m2(
-            HttpServletRequest request,
-            HttpServletResponse response) {
+    public String m2(HttpServletRequest request, HttpServletResponse response) {
         return "Exam05_1.m2()";
     }
     
@@ -52,8 +49,8 @@ public class Exam05_1 {
         return "Exam05_1.m4()";
     }
     */
-    @Autowired ServletContext servletContext;
-    
+    //@Autowired ServletContext servletContext;
+    //의존객체로 주입받아야함. 파라미터로 받을 순 없음 
     
 }
 

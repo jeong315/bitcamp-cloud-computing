@@ -35,6 +35,7 @@ function click3() {
     xhr.setRequestHeader("Content-Type", "text/csv");
     xhr.send("aaa,20,1111-2222");
     window.alert(xhr.responseText);
+    //통으로 보내기
 }
 
 function click4() {
@@ -43,6 +44,7 @@ function click4() {
     xhr.setRequestHeader("Content-Type", "application/json")
     xhr.send('{"name":"aaa","age":20,"tel":"1111-2222"}');
     window.alert(xhr.responseText);
+    //통째로 보내기 
 }
 
 function click5() {
