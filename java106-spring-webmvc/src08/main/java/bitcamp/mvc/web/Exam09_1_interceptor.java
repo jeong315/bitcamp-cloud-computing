@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class Exam09_1_interceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+               //페이지 컨트롤러에 메서드를 호출하기 전
             throws Exception {
         System.out.println("Exam09_1_interceptor.preHandler()");
         return true; // 다음 인터셉터 또는 페이지 컨트롤러를 실행하려면 true
@@ -31,12 +32,14 @@ public class Exam09_1_interceptor implements HandlerInterceptor {
     
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+          //페이지 컨트롤러에 메서드를 호출하기 후
             ModelAndView modelAndView) throws Exception {
         System.out.println("Exam09_1_interceptor.postHandle()");
     }
     
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+                //JSP실행을 끝낸 후 
             throws Exception {
         System.out.println("Exam09_1_interceptor.afterCompletion()");
     }

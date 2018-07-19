@@ -1,4 +1,5 @@
 // URL에서 값을 추출하기 - 매트릭스 변수(Matrix Variable)
+//매트릭스 : 여러가지 복합적으로 섞여잇음 
 package bitcamp.mvc.web;
 
 import javax.servlet.ServletContext;

@@ -29,17 +29,22 @@
 	</bean>
 	
 	<!-- 인터셉터 꼽기 -->
+<!-- 	   특정 URL에 대해서만 인터셉터 적용하기 -->
 	<mvc:interceptors>
-	   <!-- 모든 요청에 대해 인터셉터를 적용한다. -->
-	   <!-- <bean class="bitcamp.mvc.web.Exam09_1_interceptor"/> -->
+<!-- 	   <mvc:interceptor>로 지정하지 않고 등록하면 모든 요청에 대해 인터셉터를 적용한다. -->
+<!-- 	   <bean class="bitcamp.mvc.web.Exam09_1_interceptor"/> -->
 	   
-	   <!-- 특정 URL에 대해서만 인터셉터 적용하기 -->
+	
 	   <mvc:interceptor>
 	       <mvc:mapping path="/exam09_1/**"/>
+	       <!-- 그 경로 뿐만 아니라 하위경로도 모두 포함해서 전부 실행  -->
 	       <mvc:exclude-mapping path="/exam09_1/bbb/**"/>
+	       <!-- /exam09_1/bbb/** 는 제외하라  -->
 	       <bean class="bitcamp.mvc.web.Exam09_1_interceptor"/>
-	   </mvc:interceptor>
-	</mvc:interceptors>
+	       <!-- 그럼 전부 인터셉터처리하라  // 로그인필요한 창에서 로그인하라고 되돌려보내는거-->
+	   </mvc:interceptor> 
+ 	</mvc:interceptors>
+
 </beans>
 
 

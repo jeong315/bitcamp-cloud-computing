@@ -9,8 +9,8 @@ public interface MemberDao {
     //이제 구현체가 사라짐
      List<Member> selectList(Map<String, Object> params);
      Member selectOne(String id);
+     int insert(Member member);
      int update(Member member);
      int delete(String id);
-     int insert(Member member);
 
 }

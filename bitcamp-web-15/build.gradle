@@ -38,6 +38,9 @@ dependencies {
     // Spring JDBC 라이브러리
     compile group: 'org.springframework', name: 'spring-jdbc', version: '5.0.7.RELEASE'
     
+    // JSON 데이터를 다루는 라이브러리
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.6'
+    
     // Spring WebMVC 라이브러리
     // =>Spring WebMVC는 Spring Context 라이브러리를 사용하기 때문에 
     //  WebMVC 라이브러리를 가져오면 Context 라이브러리는 자동으로 포함한다.

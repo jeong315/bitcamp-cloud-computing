@@ -15,7 +15,7 @@ public class Exam06_4 {
         model.addAttribute("name", "홍길동");
         model.addAttribute("age", 20);
         
-        // InternalResourceViewResolver를 사용하면 
+        // InternalResourceViewResolver를 사용하면(WEB-INF/spring/mvc-servlet.xml의 <bean id ="viewResolver"로 정의해줘야함) 
         // view URL을 리턴할 때 다음과 같이 간결해진다.
         return "exam06_4";
     }
