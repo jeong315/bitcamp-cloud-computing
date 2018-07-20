@@ -9,7 +9,7 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
     
     <context:component-scan base-package="bitcamp.java106.step13.ex1"/>
-    
+    <!-- step13.ex1패키지 안에 있고 @어쩌고가 붙은 거에 대해서 거기있는 클래스를 자동으로 만들어라 -->
 </beans>
 
 
