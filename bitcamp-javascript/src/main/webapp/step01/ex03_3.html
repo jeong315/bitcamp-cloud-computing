@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+
+</head>
+<body>
+	<h1>strict 모드와 script 태그</h1>
+	
+	<script type="text/javascript">
+	"use strict"
+// 	   var a;
+	
+	
+	   a = 100; // 실행 오류!
+	   console.log(a);
+	   console.log(typeof a);
+	//변수에 다른 종류의 값을 넣으면 타입이 바뀐다.
+	   a = "안뇽"; //a 의 변수는 string 타입이 된다.
+	   console.log(a);
+	   console.log(typeof a);
+
+	   //변수 선언없이 마구잡이로 변수를 사용하면 유지보수가 힘들어진다.
+	   //그래서 변수선언을 강요하기 위해 strict 모드라는 것을 제공한다.
+	   
+	   //"use strict" //그냥 한줄의 문자열로 strict를 선언하라
+	   
+	   b = 200; //오류? 중간에 선언하는 것은 소용없다. 반드시 script 태그 첫줄에 선언되어야 한다.
+	   console.log(b);
+	</script>
+	
+	<script type="text/javascript">
+	// use strict는 선언된 태그에서만 적용된다.
+	   c = 200; //실행 오류? 정상실행!
+			    //이전에 선언된 use strict는 다른 태그에 영향을 끼치지 못한다.	
+	   console.log(c);
+	</script>
+
+</body>
+</html>

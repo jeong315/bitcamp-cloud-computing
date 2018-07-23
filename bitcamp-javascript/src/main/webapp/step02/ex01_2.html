@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <h1>조건문 - switch</h1>
+    
+    <script>
+    "use strict"
+    
+     var level = 1.5; // 자바스크립트는 부동소수점 가능
+     
+     switch (level){     
+         case 1 : console.log("1"); break;
+         case 1.5 : console.log("1.5"); break;
+         case 2 : console.log("2"); break;
+         default : console.log("깃하");
+     }
+    </script>
+    
+    <script>
+     var level = true; // 자바스크립트는 논리값 가능
+     
+     switch (level){ //switch에 다양한 값이 올 수 있다.
+         case false : console.log("false"); break;
+         case true : console.log("true"); break;
+         default : console.log("기타");
+     }
+    </script>
+    
+    <script>
+     var value = "홍길동"; // 자바스크립트는 논리값 가능
+     
+     switch (value){ //switch에 다양한 값이 올 수 있다.
+         case false : console.log("false"); break;
+         case true : console.log("true"); break;
+         case 100 : console.log("100"); break;
+         case 3.14 : console.log("3.14"); break;
+         case "홍길동" : console.log("홍길동"); break;
+         default : console.log("기타");
+     }
+    </script>
+
+</body>
+</html>
