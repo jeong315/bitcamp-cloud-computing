@@ -26,11 +26,16 @@ compileJava {
 }
 
 dependencies {
-    // This dependency is found on compile classpath of this component and consumers.
+    // => compile: 빌드할 때 사용, 배포에 포함
     compile 'com.google.guava:guava:23.0'
 
-    // Use JUnit test framework
+    // => testCompile: 테스트 할 때만 사용, 배포에는 제외
     testCompile 'junit:junit:4.12'
+    
+    // Servlet API
+    // => providedCompile : 빌드할 때 사용, 배포에는 제외
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    
 }
 
 // In this section you declare where to find the dependencies of your project
