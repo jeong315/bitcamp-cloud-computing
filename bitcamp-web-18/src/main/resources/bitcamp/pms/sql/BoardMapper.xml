@@ -42,5 +42,9 @@
         delete from pms2_board
          where bno = #{value}
     </delete>
+    
+    <select id="countAll" resultType="int">
+        select count(*) from pms2_board
+    </select>
   
   </mapper>

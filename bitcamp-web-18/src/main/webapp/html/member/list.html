@@ -55,6 +55,8 @@
 	            alert("서버에서 오류 발생!");
 	            return;
 	        }
+	        console.log("xhr.responseText :",xhr.responseText);
+	        console.log("JSON.parse(xhr.responseText)",JSON.parse(xhr.responseText));
 	        data = JSON.parse(xhr.responseText);
 	        tbody.innerHTML = '';
 	        for (var item of data.list) {

@@ -13,15 +13,15 @@
 <body>
     <h1>AJAX 동기요청  - 동기 방식 계산기 구현 </h1>
     
-    <input id="iA" type="text">
-    <select id="iOp">
+    <input id="inputA" type="text">
+    <select id="iOption">
         <option value="%2B">+</option>
         <option>-</option>
         <option>*</option>
         <option>/</option>
     </select>
     
-    <input id="iB" type="text">
+    <input id="inputB" type="text">
     
     
     <button id="btn1">계산하기</button>
@@ -37,9 +37,9 @@
 	       var xhr = new XMLHttpRequest();
 
 	       xhr.open('GET',
-	                'ex01_2.jsp?a='+iA.value + 
-	                '&op='+iOp.value+
-	                '&b=' + iB.value ,false);	       
+	                'ex01_2.jsp?a='+inputA.value + 
+	                '&op='+iOption.value+
+	                '&b=' + inputB.value ,false);	       
 	       xhr.send();
 	       
 	       resultDiv.innerHTML = xhr.responseText;
