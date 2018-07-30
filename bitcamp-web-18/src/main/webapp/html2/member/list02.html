@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>멤버 목록</title>
+</head>
+<body>
+<h1>멤버 목록5</h1>
+<p><a href='view.html'>새회원</a></p>
+
+<table id="eListTable" border='1'>
+<thead>
+  <tr><th>아이디</th><th>이메일</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+
+<div>
+  <button id="ePrevBtn">이전</button>
+  <span id="ePageNo"></span> 
+  <button id="eNextBtn">다음</button>
+</div>
+
+
+<script src="../js/bit.js"></script>
+<script>
+"use strict"
+var {page, size} = $.parseQuery(location.href);
+let tbody = $('#eListTable > tbody'); 
+let data = null;
+if (page != undefined && size != undefined) {
+    loadList(page, size);
+} else {
+    loadList(1, 3);
+}
+ePrevBtn.onclick = function() {
+    loadList(data.page - 1, data.size);
+};
+eNextBtn.onclick = function() {
+    loadList(data.page + 1, data.size);
+};
+function loadList(page, size) {
+    $.getJSON('../../json/member/list', 
+        {
+            page: page,//프로퍼티 : 변수명
+            size: size
+        },
+        function(result) {
+//          dataType: 'json',함수의 경우는 필요없음 
+//          success: function(result){
+//            bit.js에서 처리함 
+//              data = JSON.parse(xhr.responseText);
+            data = result;
+            tbody.html('');
+            for (var item of data.list) {
+                $("<tr>")
+                  .html(/*tr.innerHTML 함수 호출*/
+                        `<td><a href='#' data-id='${item.id}' onclick='clickViewLink(event)'>${item.id}</a></td>
+                        <td>${item.email}</td>`)
+//                 tbody.appendChild(tr);
+//                 tbody.append(tr);
+                  .appendTo(tbody);
+            }
+          //오리지날 태그 객체는 jquery함수가 안들어 잇음 그래서  $()에 써줌
+            $(ePageNo).html(data.page);
+            if (data.page <= 1)
+              //ePrevBtn.setAttribute('disabled', '');
+                $(ePrevBtn).attr('disabled', '');
+            else 
+                $(ePrevBtn).removeAttr('disabled');
+            
+            if (data.page >= data.totalPage)
+                $(eNextBtn).attr('disabled', '');
+            else
+                $(eNextBtn).removeAttr('disabled');
+    });
+//  var xhr = new XMLHttpRequest();
+    
+//  xhr.onreadystatechange = function() {
+//      if (xhr.readyState < 4) return;
+//      if (xhr.status !== 200) {
+         
+//          return;
+//      }
+
+}
+function clickViewLink(event) {
+    event.preventDefault();
+    var id = $(event.currentTarget).attr('data-id');
+    location.href = `view.html?id=${id}&page=${data.page}&size=${data.size}`;
+}
+
+</script>
+
+</body>
+</html>

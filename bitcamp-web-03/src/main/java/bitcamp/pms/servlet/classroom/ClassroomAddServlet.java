@@ -28,13 +28,7 @@ public class ClassroomAddServlet extends HttpServlet{
 
         
         request.setCharacterEncoding("UTF-8");
-        
-//        Classroom classroom = new Classroom();
-//        classroom.setTitle(request.getParameter("title"));
-//        classroom.setStartDate(Date.valueOf(request.getParameter("startDate")));
-//        classroom.setEndDate(Date.valueOf(request.getParameter("endDate")));
-//        classroom.setRoom(request.getParameter("room"));
-        
+  
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
@@ -48,30 +42,29 @@ public class ClassroomAddServlet extends HttpServlet{
         out.println("<body>");
         out.println("<h1>강의 등록 결과</h1>");
         
-        ClassroomDao classroomDao = (ClassroomDao)this.getServletContext().getAttribute("classroomDao"); 
-        
         try {
-            Classroom classroom = new Classroom();
-            classroom.setCrno(Integer.parseInt(request.getParameter("crno")));
-            classroom.setTitle(request.getParameter("title"));
-            
-           
-            
-            classroom.setStartDate(request.getParameter("startDate"));
-            classroom.setEndDate(request.getParameter("endDate"));
-            classroom.setRoom(request.getParameter("Room"));
-            
-            classroomDao.insert(classroom);
-            
-            out.println("<p>등록 성공!</p>");
-            
-        } catch (Exception e) {
-            out.println("<p>등록 실패!</p>");
-            e.printStackTrace(out);
-        }
-        out.println("</body>");
-        out.println("</html>");
-        
-    }
+          Class.forName("com.mysql.jdbc.Driver");
+          try (
+              Connection con = DriverManager.getConnection(
+                  "jdbc:mysql://52.79.189.185:3306/studydb",
+                  "study", "1111");
+              PreparedStatement stmt = con.prepareStatement(
+                  "insert into pms2_board(titl,cont,cdt) values(?,?,now())");) {
+              
+              stmt.setString(1, request.getParameter("title"));
+              stmt.setString(2, request.getParameter("content"));
+          
+              stmt.executeUpdate();
+          }
+          out.println("<p>등록 성공!</p>");
+      } catch (Exception e) {
+          out.println("<p>등록 실패!</p>");
+          e.printStackTrace(out);
+      }
+      out.println("</body>");
+      out.println("</html>");
+      
+      
+  }
 
 }

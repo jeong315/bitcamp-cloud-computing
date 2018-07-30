@@ -69,31 +69,41 @@ public class MemberController {
 
 //    @PostMapping("add")
     @RequestMapping(value="add", method=RequestMethod.POST)
-    public String add(Member member) throws Exception {
-
-        System.out.println("멤버 추가 완료");
+    public Object add(Member member) throws Exception {
+        HashMap<String, Object> result = new HashMap<>();
         memberService.add(member);
-        return "redirect:list";
+        result.put("status", "success");
+        
+        return result;
     }
 
 //삭제☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
     @RequestMapping("delete")
-    public String delete(String id) throws Exception {
+    public Object delete(String id) throws Exception {
+        HashMap<String, Object> result = new HashMap<>();
+        
+        if (memberService.delete(id) == 0) {
+            result.put("status","fail");
+            result.put("error","해당 아이디가 없습니다.");
+        } else {
+            result.put("status", "success");
+        }
+        return result;
 
-        memberService.delete(id);
-        return "redirect: list";
 
     }
 //수정☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
     @RequestMapping("update")
-    public String update(Member member) throws Exception {
-
+    public Object update(Member member) throws Exception {
+        HashMap<String, Object> result = new HashMap<>();
 //                    (MemberDao) getServletContext().getAttribute("memberDao");               
         if (memberService.update(member) == 0) {
-            return "member/updatefail";
+            result.put("status","fail");
+            result.put("error","해당 아이디가 없습니다.");
         } else {
-            return "redirect:list";
+            result.put("status", "success");
         }
+        return result;
 
     }
 
