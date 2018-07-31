@@ -1,29 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset='UTF-8'>
-<title>멤버 목록</title>
-</head>
-<body>
-<h1>멤버 목록5</h1>
-<p><a href='view.html'>새회원</a></p>
-
-<table id="eListTable" border='1'>
-<thead>
-  <tr><th>아이디</th><th>이메일</th></tr>
-</thead>
-<tbody></tbody>
-</table>
-
-<div>
-  <button id="ePrevBtn">이전</button>
-  <span id="ePageNo"></span> 
-  <button id="eNextBtn">다음</button>
-</div>
-
-
-<script src="../js/bit.min.js"></script>
-<script>
 "use strict"
 var {page, size} = $.parseQuery(location.href);
 let tbody = $('#eListTable > tbody'); 
@@ -42,7 +16,7 @@ $(eNextBtn).click(function() {
 });
 
 function loadList(page, size) {
-    $.getJSON('../../json/member/list', 
+    $.getJSON(serverApiAddr + '/json/member/list', 
         {
             page: page,//프로퍼티명: 변수명
             size: size
@@ -90,12 +64,3 @@ function loadList(page, size) {
          var id = $(event.target).attr('data-id');//이름만 주고 값을 안주면 getter로 사용됨(set과 get을 나누지 않아도 된다는 장점)
          location.href = `view.html?id=${id}&page=${data.page}&size=${data.size}`;
      });
-
-
-
-
-
-</script>
-
-</body>
-</html>

@@ -22,4 +22,40 @@ AJAX 기반 front-end 웹 페이지 작성
 
 ### html2
 mini jQuery 라이브러리 작성
+- DOM API 랩퍼 함수 작성
+- AJAX 랩 퍼 함수 작성
+- Event 랩퍼 함수 작성
+
+### html3
+jQuery 적용
+기존에 bit.js대신 jQuery 라이브러리를 적용한다.
+
+### html4
+Bootstrap 적용
+- UI에 bootstrap 적용하기
+- css 폴더를 만들어 공통 css 관리하기
+
+### html5
+HTML과 JavaScript 분리하기(회사 마다 다르지만 분리시키는게 좋다)
+- 유지보수를 쉽게 만들기 위해  HTML과 자바스크립트 코드를 분리한다. 
+
+### html6
+모바일 웹 앱 배포 준비
+- 외부 라이브러리(jQuery, bootstrap 등)를 모두 다운받아서 로컬로 가져온다.
+- npm(node package)를 사용하여 외부 라이브러리르 가져온다.
+- 작업
+ - 'src/main/webapp/html6폴더에서 '①npm init'를 실행한다.(모두 엔터) : package.json 생성
+   jquery 라이브러리 가져온다. : ②npm install jquery --save : package.json 빼고 두개 삭제 
+   popper.js 라이브러리 가져온다. : ③npm install popper.js --save
+   bootstrap 라이브러리 가져온다. : ④npm install bootstrap --save
+ - node_modules 폴더를 삭제한 다음 'npm install'을 실행하면 자동으로 
+    package.json에 등록한 모든 라이브러리를 가져온다.  
+    
+ 모바일 앱에서   서버에 접속하려면 정확한 서버 주소를 입력해야 한다.
+ 왜? HTML, CSS, JavaScript가 서버와 같은 컴퓨터에 있는 것이 아니라 각각의 사용자 핸드폰에 있기 때문이다 
+ - src/main/webapp/html6/js 폴더에 common.js을 만든다.
+ - common.js에 서버 주소를 등록한다.
+ - 나머지 모든 파일에서 AJAX 요청 주소를 변경한다. 
    
+Phonegap을 이용하여 모바일 웹 앱 만들기 // 관리하기 어려우니 node package를 쓴다.
+모바일 웹 앱은 앱 안에 웹 브라우저 컴포넌트를 삽입하여 
