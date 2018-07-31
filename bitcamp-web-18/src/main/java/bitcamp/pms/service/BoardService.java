@@ -30,7 +30,7 @@ public class BoardService {
     
     public int update(Board board) {
         int count = boardDao.update(board);
-        if(count != 100) throw new RuntimeException("일부러 예외 발생");
+//        if(count != 100) throw new RuntimeException("일부러 예외 발생");
         return count;
     }
     

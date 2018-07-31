@@ -67,43 +67,35 @@ public class MemberController {
 //        return "member/form"; 이름이 같을 땐 굳이 리턴하지 않아도 된다. void:현재 path를 기준으로 그대로 리턴한다. 
     }
 
-//    @PostMapping("add")
-    @RequestMapping(value="add", method=RequestMethod.POST)
-    public Object add(Member member) throws Exception {
-        HashMap<String, Object> result = new HashMap<>();
-        memberService.add(member);
-        result.put("status", "success");
-        
-        return result;
-    }
+//  @PostMapping("add")
+  @RequestMapping(value="add", method=RequestMethod.POST)
+  public String add(Member member) throws Exception {
+
+      System.out.println("멤버 추가 완료");
+      memberService.add(member);
+      return "redirect:list";
+  }
+
 
 //삭제☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
-    @RequestMapping("delete")
-    public Object delete(String id) throws Exception {
-        HashMap<String, Object> result = new HashMap<>();
-        
-        if (memberService.delete(id) == 0) {
-            result.put("status","fail");
-            result.put("error","해당 아이디가 없습니다.");
-        } else {
-            result.put("status", "success");
-        }
-        return result;
 
+    @RequestMapping("delete")
+    public String delete(String id) throws Exception {
+
+        memberService.delete(id);
+        return "redirect: list";
 
     }
 //수정☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
     @RequestMapping("update")
-    public Object update(Member member) throws Exception {
-        HashMap<String, Object> result = new HashMap<>();
+    public String update(Member member) throws Exception {
+
 //                    (MemberDao) getServletContext().getAttribute("memberDao");               
         if (memberService.update(member) == 0) {
-            result.put("status","fail");
-            result.put("error","해당 아이디가 없습니다.");
+            return "member/updatefail";
         } else {
-            result.put("status", "success");
+            return "redirect:list";
         }
-        return result;
 
     }
 

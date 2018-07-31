@@ -7,7 +7,7 @@
 <body>
     <h1> 게시판</h1>
     <p>
-        <a href="form">새 글</a>
+        <a href="view.html">새 글</a>
     </p>
     <table id="eListTable" border="1">
         <thead>
@@ -16,16 +16,14 @@
                 <th>제목</th>
                 <th>작성일</th>
             </tr>
-        </thead>
-        
-        <tbody>
-        </tbody>
+        </thead>      
+        <tbody></tbody>
     </table>
     
     <div>
-        <button>이전</button>
+        <button id="ePrevBtn">이전</button>
         <span id="ePageNo"></span>
-        <button>다음</button>
+        <button id="eNextBtn">다음</button>
     </div>
     
     <script src="../js/common.js"></script>
@@ -34,21 +32,19 @@
     
     var {page, size} = parseQuery(location.href);
     let tbody = document.querySelector('#eListTable > tbody');
-    let data = null;
-    
+    let data = null ;
     if (page != undefined && size != undefined){
         loadList(page, size);
-    } else{
+    } else {
         loadList(1, 5);
     }
-    
+
     ePrevBtn.onclick = function(){
         loadList(data.page - 1, data.size);
     };
     eNextBtn.onclick = function(){
-        loadList(data.page + 1, data.size);
+        loadList(data.page + 1, data.size);  
     };
-    
     function loadList(page, size){
         var xhr = new XMLHttpRequest();
         
@@ -58,7 +54,6 @@
                 alert("서버에서 오류 발생");
                 return;
             }
-            
             data = JSON.parse(xhr.responseText);
             tbody.innerHTML = '';
             for(var item of data.list){
@@ -67,28 +62,28 @@
                     `<td>${item.no}</td>
                     <td><a href='#' data-id='${item.no}' onclick='clickViewLink(event)'>${item.title}</a></td>
                     <td>${item.createDate}</td>`;
-                tbody.appendChild(tr);    
+                tbody.appendChild(tr);   
             }
             
             ePageNo.innerHTML = data.page;
             if(data.page <= 1)
-                ePrevBtn.setAttribute('disabled','');
+                ePrevBtn.setAttribute('disabled', '');
             else
                 ePrevBtn.removeAttribute('disabled');
-            if (data.page >= data.totalPage)
-                eNextBtn.setATtribute('disabled','');
+            if(data.page >= data.totalPage)
+                eNextBtn.setAttribute('disabled', '');
             else
                 eNextBtn.removeAttribute('disabled');
         };
         xhr.open('GET',
                 `../../json/board/list?page=${page}&size=${size}`,
-                        true);
+                true);
         xhr.send();
     }
     
     function clickViewLink(event){
         event.preventDefault();
-        var id = event.currentTarget.getAttribute('data-id');
+        var no = event.currentTarget.getAttribute('data-id');
         location.href = `view.html?no=${no}&page=${data.page}&size=${data.size}`;
     }
     

@@ -18,7 +18,7 @@
             </tr>
             <tr>
                 <th>내용</th>
-                <td><textarea id='eContent' cols="60" rows="10" >${board.content}</textarea></td>
+                <td><textarea id='eContent' cols="60" rows="10" ></textarea></td>
             </tr>
             <tr>
                 <th>등록일</th>
@@ -27,8 +27,9 @@
         </table>
         <p>
             <button id="eListBtn" type="button">목록</button>
-            <button id="eUpdateBtn" type="button">변경</button>
-            <button id="eDeleteBtn" type="button" >삭제</button>
+            <button id="eUpdateBtn" type="button" class="viewform">변경</button>
+            <button id="eDeleteBtn" type="button" class="viewform">삭제</button>
+            <button id="eAddBtn" type="button" class="newform">등록</button>
         </p>
     </form>
     
@@ -38,21 +39,31 @@
     
     var data = null;
     var {no, page, size} = parseQuery(location.href);
-    if (no == undefined){
-        alert('번호를 다시 선택해 주십시오.');
-        location.href="list.html";
+    if(no == undefined){
+        var el = document.querySelectorAll('.viewform');
+        for(var e of el){
+            e.style.display = 'none';
+        }
+        eNo.removeAttribute("readonly");
+        
     }else{
+        var el = document.querySelectorAll('.newform');
+        for(var e of el){
+            e.style.display = 'none';
+        }
+//         eNo.removeAttribute("readonly");
+        
         var xhr = new XMLHttpRequest();
         
         xhr.onreadystatechange = function(){
-            if (xhf.readyState < 4) return;
-            if (xhr.status !== 200) {
-                alert("서버에서 오류 발생!");
+            if(xhr.readyState < 4) return;
+            if(xhr.status !== 200){
+                alert('서버에서 오류 발생!');
                 return;
             }
             data = JSON.parse(xhr.responseText);
             if(data.board == null){
-                alert('글이 무효합니다.');
+                alert('글이 존재하지 않습니다.');
                 location.href = "list.html";
                 return;
             }
@@ -61,16 +72,87 @@
             eContent.value = data.board.content;
             eCreateDate.value = data.board.createDate;
         };
-        
         xhr.open('GET',
                 `../../json/board/view/${no}`,
                 true);
-        xhr.send();                 
+        xhr.send();
     }
     eListBtn.onclick = function(){
-        location.href = `list.html?page=${page}&size=${size}`;
+        if(page){
+            location.href = `list.html?page${page}&size=${size}`;
+        }else{
+            location.href = 'list.html';
+        }
     };
     
+    eUpdateBtn.onclick = function(){
+        var xhr = new XMLHttpRequest();
+        
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState < 4) return;
+            if(xhr.status !== 200){
+                alert('서버에서 오류 발생!');
+                return;
+            }
+            let data = JSON.parse(xhr.responseText);
+            
+            if(data.status == 'success'){
+                location.href = `list.html?page${page}&size=${size}`;
+            }else{
+                alert("변경오류");
+                console.log(data.error);
+            }
+        };
+        xhr.open('POST', '../../json/board/update',true);
+        
+        xhr.setRequestHeader('Content-Type',
+                'application/x-www-form-urlencoded');
+        
+        xhr.send(`no=${eNo.value}&title=${eTitle.value}
+                  &content=${eContent.value}&createDate=${eCreateDate.value}`);
+    };
+    
+    eDeleteBtn.onclick = function(){
+        var xhr = new XMLHttpRequest;
+        
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState < 4) return ;
+            if(xhr.status !== 200){
+                alert('서버에서 오류 발생');
+                return;
+            }
+            let date = JSON.parse(xhr.responseText);
+            if(data.status == 'success'){
+                location.href = `list.html?page=${page}&size=${size}`;
+            }else{
+                alert('삭제오류입니다.');
+                console.log(data.error);
+            }
+        };
+        xhr.open('GET',
+                `../../json/board/delete?no=${eNo.value}`,
+                true);
+        xhr.send();
+    };
+    
+    eAddBtn.onclick = function(){
+        var xhr = new XMLHttpRequest();
+        
+        xhr.onreadystatechange = function(){
+          if(xhr.readyState < 4) return;
+          if(xhr.status !== 200){
+              alert('서버에서 오류 발생');
+              return;
+          }
+          location.href = 'list.html';
+        };
+        xhr.open('POST','../../json/board/add',true);
+        xhr.setRequestHeader('Content-Type',
+                'application/x-www-form-urlencoded');
+        xhr.send(`no=${eNo.value}&title=${eTitle.value}
+                &content=${eContent.value}`);
+    };
+
     </script>
     
 </body>

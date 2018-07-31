@@ -69,41 +69,53 @@ public class BoardController{
     
 //    @PostMapping("add")
     @RequestMapping(value="add", method=RequestMethod.POST)
-    public String add(Board board) throws Exception {
-            System.out.println("글 작성 성공");
-            boardService.add(board);
-            System.out.printf("번호 : %d\n제목 : %s\n내용 : %s",
-                               board.getNo(),
-                               board.getTitle(),
-                               board.getContent());
+    public Object add(Board board) throws Exception {
+            
+        HashMap<String, Object> result = new HashMap<>();
+   
+        System.out.println("글 작성 성공");
+        boardService.add(board);
+        result.put("status", "success");
+        System.out.printf("번호 : %d\n제목 : %s\n내용 : %s",
+                             board.getNo(),
+                             board.getTitle(),
+                             board.getContent());
 
-            return "redirect:list";
+            return result;
     }
     
 //수정☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★       
     @RequestMapping("update")
-    public String update(Board board) throws Exception {
-            
+    public Object update(Board board) throws Exception {
+        HashMap<String, Object> result = new HashMap<>();    
+        if (boardService.update(board) == 0) {
+            result.put("status","fail");
+            result.put("error","해당 아이디가 없습니다.");
+        } else {
+            result.put("status", "success");
+        }
         System.out.printf("번호 : %d\n수정된 제목 : %s\n수정된 내용 : %s\n",
                 board.getNo(),
                 board.getTitle(),
                 board.getContent());
-          
-            if (boardService.update(board) == 0) {
-                return "board/updatefail";
-            } else {
-                return "redirect: list";               
-            }
+        return result;
    
     }
     
 //삭제☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★      
     @RequestMapping("delete")
-    public String delete(int no) throws Exception {
-
-        boardService.delete(no);
+    public Object delete(int no) throws Exception {
+        HashMap<String, Object> result = new HashMap<>();
+        
+        if (boardService.delete(no) == 0) {
+            result.put("status","fail");
+            result.put("error","해당 아이디가 없습니다.");
+        } else {
+            result.put("status", "success");
+        }
         System.out.println(no+"번 삭제되었습니다.");
-        return "redirect: list";
+        return result;
+
     }
 
 

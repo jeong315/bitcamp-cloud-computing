@@ -21,7 +21,8 @@ public class ClassroomAddServlet extends HttpServlet{
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        
+        Date classDate = new Date();
         
         request.setCharacterEncoding("UTF-8");
         
@@ -58,9 +59,10 @@ public class ClassroomAddServlet extends HttpServlet{
 //                Calendar.getInstance(Locale.KOREAN)
                 
                 stmt.setString(1, request.getParameter("title"));
-                stmt.setDate(2, Date.valueOf(request.getParameter("startDate")),Calendar.getInstance(Locale.KOREAN));
-                stmt.setDate(3, Date.valueOf(request.getParameter("endDate")),Calendar.getInstance(Locale.KOREAN));
+//                stmt.setDate(2, Date.valueOf(request.getParameter("startDate")),Calendar.getInstance(Locale.KOREAN));
+//                stmt.setDate(3, Date.valueOf(request.getParameter("endDate")),Calendar.getInstance(Locale.KOREAN));
                 stmt.setString(4, request.getParameter("room"));
+                stmt.setDate(2, classDate.compareTo(request.getParameter("startDate")));
             
                 stmt.executeUpdate();
             }
