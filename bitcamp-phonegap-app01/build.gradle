@@ -1,0 +1,5 @@
+plugins {
+    // 자바가 아니니까 뺀다.
+
+    id 'eclipse'
+}

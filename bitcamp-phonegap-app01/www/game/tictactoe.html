@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"href="../css/tictactoe.css">
+<title>App01</title>
+</head>
+<body>
+    <h1>Tic-Tac-Toe 게임</h1>
+    <!-- 1초 경과 후 O 표시 : 랜덤으로 표시 ; Math.random:0<=x<1, 소수점 떼기 -->   
+    <!-- 1) Listener 등록 /삭제
+         2) Event 버블링 처리
+         3) Math.random() 사용법
+         4) setTimeout() 사용법
+         5) UI 제어 -->
+         
+         
+         <h1>Tom's Tic Tac Toe in JS</h1>
+
+    <div id="message">MESSAGE HERE</div>
+
+    <table border = "1">
+        <tr>
+            <td class="ttt" id="t1" onClick="nextMove(this)"></td>
+            <td class="ttt" id="t2" onClick="nextMove(this)"></td>
+            <td class="ttt" id="t3" onClick="nextMove(this)"></td>
+        </tr>
+        <tr>
+            <td class="ttt" id="t4" onClick="nextMove(this)"></td>
+            <td class="ttt" id="t5" onClick="nextMove(this)"></td>
+            <td class="ttt" id="t6" onClick="nextMove(this)"></td>
+        </tr>
+        <tr>
+            <td class="ttt" id="t7" onClick="nextMove(this)"></td>
+            <td class="ttt" id="t8" onClick="nextMove(this)"></td>
+            <td class="ttt" id="t9" onClick="nextMove(this)"></td>
+        </tr>
+    </table>
+    <a href="javascript: startGame();" id="restart">New Game</a>
+
+</body>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/jquery.bit.js"></script>
+<script src="../js/common.js"></script>
+<script src="tictactoe.js"></script>
+</html>
