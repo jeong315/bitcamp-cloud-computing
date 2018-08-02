@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"href="../css/tictactoe.css">
+<title>App01</title>
+<style type="text/css">
+
+    #cell-box{
+        border: 1px solid midnightblue;
+        width: 152px;
+        overflow: hidden; /*float 때문에 공중부양 되서 overflow로 고정 시켜줘야함 */
+    }
+    .cell{
+        box-sizing: border-box; /*크기를 결정할때 컨텐트의 크기 뿐만 아니라 border도 포함해라*/
+        display: block;
+        float: left;
+        width: 50px;
+        height: 0px;
+        border: 1px solid CadetBlue;
+        padding-top: 50px;
+        text-align: center; 
+        overflow: hidden;
+    }
+    
+    .cell-x{
+        background: url('https://thumbs.dreamstime.com/z/outlined-love-heart-icon-transparent-background-108643574.jpg');
+        background-size: 50px;
+        background-repeat: no-repeat;
+    }
+    .cell-o{
+        background: url('https://previews.123rf.com/images/fokaspokas/fokaspokas1612/fokaspokas161200051/69001940-simple-heart-icon-black-icon-on-transparent-background-.jpg');
+        background-size: 50px;
+        background-repeat: no-repeat;        
+    }
+.toolbar {
+    margin: 10px 0px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Tic-Tac-Toe 게임</h1>
+<h2>9단계</h2>
+<ul>
+    <li>UI와 데이터(모델)를 관리하기 쉽도록 분리한다.</li>
+</ul>
+
+<div id="cell-box">
+    <a data-no="0" class="cell"></a>
+    <a data-no="1" class="cell"></a>
+    <a data-no="2" class="cell"></a>
+    <a data-no="3" class="cell"></a>
+    <a data-no="4" class="cell"></a>
+    <a data-no="5" class="cell"></a>
+    <a data-no="6" class="cell"></a>
+    <a data-no="7" class="cell"></a>
+    <a data-no="8" class="cell"></a>
+</div>
+<div class="toolbar">
+<a id='new-game' class="btn btn-primary">새 게임</a>
+</div>
+</div>
+
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/jquery.bit.js"></script>
+<script src="../js/common.js"></script>
+<script src="tictactoe09.js"></script>
+</body>
+</html>

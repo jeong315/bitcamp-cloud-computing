@@ -58,4 +58,5 @@ HTML과 JavaScript 분리하기(회사 마다 다르지만 분리시키는게 �
  - 나머지 모든 파일에서 AJAX 요청 주소를 변경한다. 
    
 Phonegap을 이용하여 모바일 웹 앱 만들기 // 관리하기 어려우니 node package를 쓴다.
-모바일 웹 앱은 앱 안에 웹 브라우저 컴포넌트를 삽입하여 
+- ios/andriod phonegap 앱 설치
+- 

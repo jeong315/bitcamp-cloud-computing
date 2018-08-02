@@ -50,11 +50,10 @@ $(eUpdateBtn).click(function() {
     'json');
 });
 
-$(eDeleteBtn).click(function() {
-    
-    $.getJSON(serverApiAddr + `json/member/delete?id=${eId.value}`,
-            function(result){
-        let data = JSON.parse(xhr.responseText);
+$(eDeleteBtn).click(function() { 
+    $.getJSON(serverApiAddr + `/json/member/delete?id=${eId.value}`,
+            function(data){
+//        let data = JSON.parse(xhr.responseText);
         if (data.status == 'success') {
             location.href = `list.html?page=${page}&size=${size}`;
         } else {
@@ -63,18 +62,6 @@ $(eDeleteBtn).click(function() {
         }
  
     });
-//     var xhr = new XMLHttpRequest();    
-//     xhr.onreadystatechange = function() {
-//         if (xhr.readyState < 4) return;
-//         if (xhr.status !== 200) {
-//             alert('서버에서 오류 발생!');
-//             return;
-//         }
-//     };   
-//     xhr.open('GET', 
-//             ,
-//             true);
-//     xhr.send();
 });
 
  $(eAddBtn).click(function(){

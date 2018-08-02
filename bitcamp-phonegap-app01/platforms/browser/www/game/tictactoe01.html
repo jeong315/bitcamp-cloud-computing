@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"href="../css/tictactoe.css">
+<title>App01</title>
+<style type="text/css">
+/*    .cell:first-child{
+        float: left;  공중부양 시켜라
+        width: 30px;
+        height: 50px;
+        border: 1px solid tomato;
+    }
+    .cell:nth-child(2){
+        float: left;
+        border: 1px solid steelblue;
+    }*/
+    
+    #cell-box{
+        border: 1px solid midnightblue;
+        width: 152px;
+        overflow: hidden; /*float 때문에 공중부양 되서 overflow로 고정 시켜줘야함 */
+    }
+    .cell{
+        box-sizing: border-box; /*크기를 결정할때 컨텐트의 크기 뿐만 아니라 border도 포함해라*/
+        display: block;
+        float: left;
+        width: 50px;
+        height: 50px;
+        border: 1px solid CadetBlue;
+        padding: 10px;
+        text-align: center; 
+    }
+    
+
+</style>
+</head>
+<body>
+    <h1>Tic-Tac-Toe 게임</h1>
+    <ul>
+        <li>1. 기본 페이지를 만든다.</li>
+        <li>2. 화면의 레이아웃을 설계한다.</li>
+        <li>3. 사용자 액션에 대한 이벤트를 처리한다.</li>
+    </ul>
+    
+    <div id="cell-box"><!-- 아이디엔 -를 많이씁니다. -->
+        <a class="cell">0</a>
+        <a class="cell">1</a>
+        <a class="cell">2</a>
+        <a class="cell">3</a>
+        <a class="cell">4</a>
+        <a class="cell">5</a>
+        <a class="cell">6</a>
+        <a class="cell">7</a>
+        <a class="cell">8</a>
+    </div>
+    <a>새 게임</a>
+
+
+</body>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/jquery.bit.js"></script>
+<script src="../js/common.js"></script>
+<script src="tictactoe03.js"></script>
+</html>

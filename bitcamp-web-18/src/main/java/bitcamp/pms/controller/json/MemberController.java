@@ -1,6 +1,7 @@
 package bitcamp.pms.controller.json;
 
 import java.util.HashMap;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +23,7 @@ import bitcamp.pms.dao.MemberDao;
 import bitcamp.pms.domain.Member;
 import bitcamp.pms.service.MemberService;
 
+//@CrossOrigin
 @RestController
 @RequestMapping("/member")
 public class MemberController {
@@ -28,6 +31,8 @@ public class MemberController {
     @Autowired MemberService memberService;
 
 //리스트☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
+    //CrossOrigin 옵션을 안 주면 모두 ajax요청, 데이터 추출 허용(list만 허용)
+    //@CrossOrigin
     @RequestMapping("list")
     public Object list(@RequestParam(defaultValue = "1") int page,
                        @RequestParam(defaultValue = "3") int size) throws Exception {
