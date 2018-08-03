@@ -30,10 +30,26 @@
         <!-- 스프링 WebMVC의 MultipartResolver 대신에 
              Servlet 3.0+ 서블릿 컨테이너에서 기본으로 제공하는 
              멀티파트 처리기를 사용하고 싶다면 다음 태그를 추가해야 한다. -->
+        <multipart-config/>
     </servlet>
     <servlet-mapping>
         <servlet-name>mvc</servlet-name>
         <url-pattern>/mvc/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>fileupload05</servlet-name><!-- 이걸 가리킴 -->
+        <servlet-class>bitcamp.servlet.FileUploadServlet05</servlet-class>
+        <multipart-config>
+            <max-file-size>2000000</max-file-size><!-- 0*6=1Mb -->
+            <max-request-size>20000000</max-request-size>
+            <file-size-threshold>1048576</file-size-threshold>
+        </multipart-config>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>fileupload05</servlet-name><!-- 이게  -->
+        <url-pattern>/fileupload05</url-pattern><!-- /로 시작 -->
     </servlet-mapping>
 
     <welcome-file-list>
