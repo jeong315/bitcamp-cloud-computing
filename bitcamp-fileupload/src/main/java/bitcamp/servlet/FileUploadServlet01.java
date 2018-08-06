@@ -42,6 +42,7 @@ public class FileUploadServlet01 extends HttpServlet {
             List<FileItem> items = upload.parseRequest(req);
             for (FileItem item : items) {
                 if (item.isFormField()) { // 일반 폼 데이터인 경우,
+                    System.out.println("item.isFormField() : "+item.isFormField());
                     paramMap.put(item.getFieldName(), 
                             item.getString("UTF-8"));
                 } else { // 파일 데이터
