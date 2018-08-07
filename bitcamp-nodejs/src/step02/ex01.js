@@ -13,3 +13,7 @@
 //    > const mysql = require('mysql');
 const mysql = require('mysql');
 console.log(mysql);
+
+
+//nodejs는 단타성 업무에 쓴다.
+//ex) 우편번호 찾기, 아이디중복검사, 대입지원
