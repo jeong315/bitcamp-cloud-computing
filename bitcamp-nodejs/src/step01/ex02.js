@@ -8,7 +8,7 @@ const http = require('http');
 // HTTP 서버를 설정한다.
 // => 클라이언트에서 요청이 들어왔을 때 호출될 함수를 등록한다.
 const server = http.createServer((req, res) => {
-    console.log("클라이언트가 요청.. 그거했다..");
+    console.log("클라이언트가 요청했다..");
     res.end();
 });
 
