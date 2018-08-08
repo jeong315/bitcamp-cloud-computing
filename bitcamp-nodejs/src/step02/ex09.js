@@ -1,4 +1,4 @@
-// 주졔 : 데이터베이스 프로그래밍 - select 실행
+// 주졔 : 데이터베이스 프로그래밍 - delete 실행
 
 const mysql = require('mysql');
 
