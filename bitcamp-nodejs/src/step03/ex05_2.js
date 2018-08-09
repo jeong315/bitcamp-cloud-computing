@@ -35,8 +35,7 @@ const server = http.createServer((req, res) => {
     }else if(urlInfo.pathname === '/member/delete'){ remove(urlInfo, req, res);
     }else {
         res.end('해당 URL을 지원하지 않습니다.');
-        return;
-    }
+        return;}
 });
 
 server.listen(8000,() => {
