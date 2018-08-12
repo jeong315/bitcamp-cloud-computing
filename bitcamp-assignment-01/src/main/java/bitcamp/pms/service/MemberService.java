@@ -11,13 +11,13 @@ public class MemberService {
     
     @Autowired MemberDao memberDao;
     
-    public Member get(String email) {
-        return memberDao.selectOne(email);
+/*    public int login(Member member) {
+        return memberDao.login(member);
     }
     
     public int delete(String email) {
         return memberDao.delete(email);
-    }
+    }*/
     
     public void add(Member member) {
         memberDao.insert(member); 

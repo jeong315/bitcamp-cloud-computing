@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<style type="text/css">
+div{
+    padding: center;
+    border: solid 1px steelblue; 
+    width: 800px;
+    height: 600px;
+    margin: 100px;
+}
+
+body{
+    margin-left: 350px;
+}
+
+#eAddBtn{
+    margin: 100px;
+}
+.eh6{
+margin-left: 100px;
+}
+</style>
+<title>가입</title>
+</head>
+<body>
+    <div>
+    <h1 class="eh6">회 원 가 입</h1>
+    <form id="joinForm">
+        <h6 class="eh6">이메일</h6>
+        <input type="email" name="email" id="eEmail" class="eh6"><br>
+        <h6 class="eh6">이름</h6>
+        <input type="text" name="name" id="eName" class="eh6"><br>
+        <h6 class="eh6">비밀번호</h6>
+        <input type="password" name="password" id="ePassword" class="eh6"><br>
+                
+        <button class="btn btn-outline-primary" id="eAddBtn">가입</button>
+    </form>
+    </div>
+<script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
+<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/common.js"></script>
+<!-- <script src="../css/common.js"></script> -->
+ 
+ <script>
+ 
+ $(eAddBtn).click(function(){
+     alert('ㅇㅇ');
+     $.post(serverApiAddr + '/json/member/join',
+             {
+                 email: $(eEmail).val(), 
+                 name: $(eName).val() , 
+                 password: $(ePassword).val()
+                 },
+             function(data){
+             location.href = 'login.html';        
+             },
+         'json');
+
+ });
+ 
+ </script>
+</body>
+</html>

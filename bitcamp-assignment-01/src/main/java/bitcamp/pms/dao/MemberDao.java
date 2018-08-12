@@ -4,7 +4,8 @@ import bitcamp.pms.domain.Member;
 
 public interface MemberDao {
     
-    Member selectOne(String email);
-    int delete(String email);
+/*    Member user(Member member);
+    int login(Member member);
+    int delete(String email);*/
     int insert(Member member);
 }

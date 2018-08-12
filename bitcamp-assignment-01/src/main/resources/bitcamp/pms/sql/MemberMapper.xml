@@ -5,20 +5,26 @@
   
 <mapper namespace="bitcamp.pms.dao.MemberDao">
   
-  <select id="selectOne" resultMap="MemberMap" parameterType="string">
-    select id, email 
+  <!-- <select id="user" resultMap="Member" parameterType="Member">
+    select *
       from pms2_jin_member
-     where id = #{value}
+     where email = #{email} and password=#{password}
+  </select>
+  
+  <select id="login" resultMap="int" parameterType="string">
+    select count(email) 
+      from pms2_jin_member
+     where email = #{email} and password=#{password}
   </select>
   
   <delete id="delete" parameterType="string">
     delete from pms2_jin_member 
-    where id = #{value}
-  </delete>
+    where email = #{value}
+  </delete> -->
   
-  <insert id="insert" parameterType="Member">
-    insert into pms2_jin_member(id,email,password) 
-    values (#{id},#{email},password(#{password}))
+  <insert id="insert" parameterType="Member" >
+    insert into pms2_jin_member(email,name,password) 
+    values (#{email},#{name},password(#{password}))
   </insert>
 
 </mapper>

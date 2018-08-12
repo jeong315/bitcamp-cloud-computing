@@ -1,4 +1,4 @@
-package bitcamp.pms.controller;
+package bitcamp.pms.controller.json;
 
 import java.util.HashMap;
 
@@ -17,18 +17,34 @@ public class MemberController {
     
     @Autowired MemberService memberService;
     
-    @GetMapping("form")
-    public void form() {
+  /*  @PostMapping("login")
+    public Object login(Member member) throws Exception{
+        HashMap<String, Object> result = new HashMap<>();
+        
+        if(memberService.login(member)==1) {
+            result.put("status", "success");
+        }else {
+            result.put("status", "fail");
+            result.put("error","해당 아이디가 없습니다.");
+        }
+        return null;
     }
+    */
+//    @GetMapping("joinform")
+//    public void joinform() {
+//    }
     @PostMapping("join")
     public Object add(Member member) throws Exception{
         HashMap<String, Object> result = new HashMap<>();
+        System.out.println(member.getEmail()+":email");
+        System.out.println(member.getName()+":email1");
+        System.out.println(member.getPassword()+":email2");
         memberService.add(member);
         result.put("status", "success");
         return result;
     }
     
-    @RequestMapping("delete")
+  /*  @RequestMapping("delete")
     public Object delete(String email) throws Exception{
         HashMap<String, Object> result = new HashMap<>();
         
@@ -40,5 +56,5 @@ public class MemberController {
         }
         return result;
     }
-    
+    */
 }
