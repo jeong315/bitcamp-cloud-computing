@@ -1,0 +1,7 @@
+plugins {
+    id 'eclipse'
+    id 'java'
+}
+compileJava {
+    options.encoding = "UTF-8"
+    }
