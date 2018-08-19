@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+    body{
+        font-size: small;
+    }
+
+    div{
+        /* border: 1px solid tomato;
+        padding: 5px; */
+        box-sizing: border-box;
+    }
+
+    div.container{
+        width: 700px;
+    }
+    
+    footer{
+        position: relative;
+        font-size: 80%;
+    }
+    .container > header{
+        border: 1px solid tomato;
+    }
+    .container > header #app-name{
+        float: left;
+    }
+    .container > header a{
+        float: right;
+    }
+    footer #app-name{
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+    
+    footer #copyright{
+        position: absolute;
+        right: 0px;
+        top: 0px;
+    }

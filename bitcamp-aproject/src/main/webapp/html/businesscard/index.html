@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>명함 관리</title>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet"href="../css/common2.css">
+<style type="text/css">
+
+    
+    section{
+        border: 1px solid tomato;
+        box-sizing: border-box;
+    }
+    
+    #content{
+        min-height: 400px;
+        overflow: hidden;/*자식이 float이어도 자식의 높이에 따라 부모의 높이가 결정된다.*/
+    }
+    
+    #list{
+        float: left;/*공중부양하면 자신의 높이와 너비를 가져야함*/
+        width: 150px;
+    }
+    
+    #detail{
+        float: left;/*공중부양하면 자신의 높이와 너비를 가져야함*/
+        width: 500px;
+    }
+
+</style>
+
+</head>
+<body>
+<div class="container">
+
+<header></header>
+
+<section id="content">
+
+    <section id="list"></section>
+
+    <section id="detail"></section>
+
+</section><!-- #content -->
+
+<footer></footer>
+
+</div><!-- .container -->
+
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/jquery.bit.js"></script>
+<script src="../js/common2.js"></script>
+<script src="index.js"></script>
+
+</body>
+</html>
