@@ -1,49 +1,47 @@
 @charset "UTF-8";
 
 body {
-	font-size: small;
+    font-size: small;
 }
 
 div {
-	/* border: 1px solid tomato;
-        padding: 5px; */
-	box-sizing: border-box;
+    /* border: 1px solid red;
+    padding: 5px; */
+    box-sizing: border-box;
 }
 
 div.container {
-	width: 700px;
+    width: 700px;
 }
 
-.container>header {
-	border: 1px solid tomato;
-	height: 60px;
-	vertical-align: middle;
+.container > header {
+    border-bottom: 1px solid gray;
+    height: 60px;
+    padding: 10px;
 }
 
-.container>header #app-name {
-	font-size: 30px; 
-	font-weight: bold;
-	float: left;
+.container > header #app-name {
+    font-size: 30px;
+    font-weight: bold;
+    float: left;
 }
 
-.container>header a {
-	float: right;
+.container > header a {
+    float: right;
 }
 
-.container>footer {
-	position: relative;
-	font-size: 80%;
-	height: 20px;
+
+.container > footer {
+    font-size: 80%;
+    border-top: 1px solid gray;
+    padding: 10px;
+    overflow: hidden;
 }
 
-.container>footer a {
-	position: absolute;
-	left: 0px;
-	top: 0px;
+.container > footer a {
+    float: left;
 }
 
-.container>footer #copyright {
-	position: absolute;
-	right: 0px;
-	top: 0px;
+.container > footer #copyright {
+    float: right;
 }

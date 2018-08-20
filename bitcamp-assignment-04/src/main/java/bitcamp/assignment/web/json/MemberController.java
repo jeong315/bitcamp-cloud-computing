@@ -18,17 +18,16 @@ public class MemberController {
     
     @PostMapping("signUp")
     public Object signUp(Member member) {
-        HashMap<String, Object> result = new HashMap<>();
         
+        HashMap<String,Object> result = new HashMap<>();
         try {
             memberService.add(member);
-            System.out.println("가입 시도");
             result.put("status", "success");
-        }catch(Exception e){
+        } catch (Exception e) {
             result.put("status", "fail");
             result.put("message", e.getMessage());
         }
         
-       return result;
+        return result;
     }
 }

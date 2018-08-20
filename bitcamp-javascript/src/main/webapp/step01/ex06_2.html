@@ -21,22 +21,22 @@
 	   // => 객체 값을 분해하여 변수에 저장할 때는 변수 선언에 중괄호 {}를 사용하라.
 	   // => 객체에서 추출하고자 하는 프로퍼티 이름과 같은 이름으로 변수를 선언해야 한다.
 	   var {name, eng} = obj;
-	   console.log(name, eng);
+	   console.log(name, eng);//홍길동 90
 
        var {kor, eng} = obj;
-       console.log(kor, eng);
+       console.log(kor, eng);//100 90
 
        //만약 객체의 프로퍼티 값을 추출할 때 변수 이름을 다르게 하고 싶다면
        // 다음과 같이 하라!
        //  문법:
        // var {추출할 프로퍼티이름: 새변수명, 추출할 프로퍼티 이름 : 새변수명} = 객체;
        var {kor:k, eng:e } = obj;
-       console.log(k,e);
+       console.log(k,e);//100 90
        
        //값이 없을 때 기본 값을 넣고 싶다면
        //var {프로퍼티명: 새 변수명 = 기본값, ...} = 객체;
        var {name:n, sum:s = 0, aver:a = 0} = obj;
-       console.log(n, s, a);
+       console.log(n, s, a);//홍길동 0 0
 	</script>
 
 </body>

@@ -1,0 +1,30 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bitcamp.pms.dao.BusinessCardDao">
+    <select id="selectList" resultMap="BusinessCardMap" parameterType="map">
+        select name from pms2_jin_businesscard
+    </select>
+    
+    <select id="selectOne" resultMap="BusinessCardMap" parameterType="string">
+        select * from pms2_jin_businesscard where cardno=#{cardno}
+    </select>
+    
+    <insert id="insert" parameterType="BusinessCard">
+        INSERT INTO pms2_jin_businesscard (name, mobile, telephone, fax, email, memo, loginemail)
+         VALUES (#{name},#{mobile},#{telephone},#{fax},#{email},#{memo},#{loginemail})
+    </insert>
+    
+    <update id="update" parameterType="BusinessCard">
+        update pms2_jin_businesscard 
+        set name=#{name}, mobile=#{mobile}, telephone=#{telephone}, fax=#{fax}, email=#{email}, memo=#{memo} 
+        where cardno=#{cardno}
+    </update>
+    
+    <delete id="delete" parameterType="string">
+        delete pms2_jin_businesscard where cardno=#{cardno}
+    </delete>
+    
+</mapper> -->

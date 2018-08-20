@@ -17,16 +17,16 @@
 		   var a; //함수 안에서 선언한 변수는 로컬 변수다.
 		   a = 200; //설사 글로벌 변수와 이름이 같다 할 지라도 함수 안에서는 별도의 로컬 변수다.
 		   
-		   console.log("f()에서는 : " , a);
+		   console.log("f()에서는 : " , a);//200
 		   
 		   // 로컬 변수와 이름이 같은 글로벌 변수를 가리키고 싶다면
 		   // 정확하게 window 객체를 지정해야 한다.
-		   console.log("글로벌 변수 a : ",window.a);
+		   console.log("글로벌 변수 a : ",window.a);//100
 	   }
 	  
 	   f();
 	    
-	   console.log("함수 밖에서 : ", a);
+	   console.log("함수 밖에서 : ", a);//100
 	</script>
 
 </body>
