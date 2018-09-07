@@ -11,3 +11,28 @@
 {{/each}}
 </script>
 <script src="list.js"></script>
+
+
+
+
+
+
+
+
+<script id="board-template" type="text/x-handlebars-template">
+{{#each list}}
+       <div class="boardSpace"></div>
+       <div class="boardInfo">
+            <a class="boardInfo-s" id="boardInfo-title" data-toggle="modal" data-target="#myModal" href="#" style="color: white;  float: left; margin-left: 10px;">{{title}}</a>
+            <a class="boardInfo-s" href="#" style="color: white;  float: right; margin-right: 10px;">{{name}}</a>
+            <img style="float: right; margin-right: 6px;" src="">      
+        </div>
+        <div class="boardPic" style="height: 370px; width: 590px; cursor: pointer;" data-toggle="modal" data-target="#myModal">
+            <img style="height: 370px; width: 590px; cursor: pointer;"  data-toggle="modal" data-target="#myModal" src="">
+        </div>
+        <div class="boardPrice">
+            <span style="color: white;  margin-right: 20px; margin-top: 10px;">{{price}}원</span>
+        </div> 
+        <div class="boardSpace"></div>
+{{/each}}
+</script>
