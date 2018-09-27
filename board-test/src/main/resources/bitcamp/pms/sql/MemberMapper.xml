@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bitcamp.pms.dao.MemberDao">
+  
+  <!-- <select id="user" resultMap="Member" parameterType="Member">
+    select *
+      from pms2_jin_member
+     where email = #{email} and password=#{password}
+  </select>
+  
+  <select id="login" resultMap="int" parameterType="string">
+    select count(email) 
+      from pms2_jin_member
+     where email = #{email} and password=#{password}
+  </select>
+  
+  <delete id="delete" parameterType="string">
+    delete from pms2_jin_member 
+    where email = #{value}
+  </delete> -->
+  
+  <insert id="insert" parameterType="Member" >
+    insert into pms2_jin_member(email,name,password) 
+    values (#{email},#{name},password(#{password}))
+  </insert>
+
+</mapper>
+
+
+
+
